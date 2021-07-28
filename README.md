@@ -1,4 +1,4 @@
-
+[![Build status](https://ci.appveyor.com/api/projects/status/tihudx342p8fjb4i?svg=true)](https://ci.appveyor.com/project/Orlov-D/aqa-2-3-1-faker-pereplanirovat)
 
 <!--
 java -jar artifacts\app-card-delivery.jar
