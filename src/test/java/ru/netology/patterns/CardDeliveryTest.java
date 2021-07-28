@@ -35,44 +35,12 @@ public class CardDeliveryTest {
         form.$("[role=button] .button__content").click();
         $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + new SimpleDateFormat("dd.MM.yyyy").format(calendar.getTime())));
         form.$("[role=button] .button__content").click();
-        $("[data-test-id=replan-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?"));
-        $("[class=button__text]").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Перепланировать")).click();
-//        $("[data-test-id=date] input").getText();
-        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + $("[data-test-id=date] input").getText()));
+        $("[data-test-id=replan-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?\n" +
+                "\n" +
+                "Перепланировать"));
+        $("[data-test-id=replan-notification] .button__text").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Перепланировать")).click();
+        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + $("[data-test-id=date] input").getValue()));
 
     }
 
-
-//    @Test
-//    public void shouldSubmitRequestByClick() {
-//        SelenideElement form = $("[method=post]");
-//        form.$("[data-test-id=city] input").setValue("во");
-//        $$("[class=popup__content] .menu-item__control").get(3).shouldHave(exactText("Вологда")).click();
-//
-//        form.$("[data-test-id=date] input").click();
-//        String currentDay = $("[class=calendar__layout] .calendar__day_state_current.calendar__day").text();
-//        String lastDay = "zero";
-//        int size = $$("[class=calendar__layout] .calendar__row .calendar__day").size();
-//        for (int i = 0; i < 7; i++) {
-//            lastDay = $$("[class=calendar__layout] .calendar__row .calendar__day").get(size - 1 - i).text();
-//            if (!lastDay.equals("")) {
-//                break;
-//            }
-//        }
-//        int difference = Integer.parseInt(lastDay) - Integer.parseInt(currentDay);
-//        if (difference < 4) {
-//            $$(".calendar__arrow_direction_right").get(1).click();
-//            $(byText(String.valueOf(4 - difference))).shouldHave(cssClass("calendar__day")).click();
-//        } else {
-//            int tmp = Integer.parseInt(currentDay) + 4;
-//            $(byText(String.valueOf(tmp))).shouldHave(cssClass("calendar__day")).click();
-//        }
-//        form.$("[data-test-id=name] input").setValue("Васин-Красин Василь");
-//        form.$("[data-test-id=phone] input").setValue("+71234567890");
-//        form.$("[data-test-id=agreement] .checkbox__box").click();
-//        form.$("[role=button] .button__content").click();
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.DAY_OF_MONTH, 7);
-//        $("[data-test-id=notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно забронирована на " + new SimpleDateFormat("dd.MM.yyyy").format(calendar.getTime())));
-//    }
 }
