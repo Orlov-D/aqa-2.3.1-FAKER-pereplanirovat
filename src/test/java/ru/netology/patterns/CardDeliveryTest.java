@@ -29,7 +29,10 @@ public class CardDeliveryTest {
         form.$("[data-test-id=phone] input").setValue(user.getPhone());
         form.$("[data-test-id=agreement] .checkbox__box").click();
         form.$("[role=button] .button__content").click();
-        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + DataGenerator.iNeedThisDate(1)));
+        $("[data-test-id=success-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + DataGenerator.iNeedThisDate(0)));
+        form.$("[data-test-id=date] input").doubleClick();
+        form.$("[data-test-id=date] input").sendKeys(Keys.DELETE);
+        form.$("[data-test-id=date] input").setValue(DataGenerator.iNeedThisDate(1));
         form.$("[role=button] .button__content").click();
         $("[data-test-id=replan-notification] .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?\n" +
                 "\n" +
