@@ -1,4 +1,4 @@
-package generator;
+package ru.netology.patterns;
 
 import com.github.javafaker.Faker;
 import lombok.Data;
@@ -12,9 +12,9 @@ public class DataGenerator {
     private DataGenerator() {
     }
 
-    public static String iNeedThisDate() {
+    public static String iNeedThisDate(int shift) {
         LocalDate todayPlus = LocalDate.now();
-        return todayPlus.plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return todayPlus.plusDays(3 + shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
     public static String generateName(String locale) {
